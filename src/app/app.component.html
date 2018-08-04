@@ -1,20 +1,69 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<h2>第1种方:通过输入型绑定把数据从父组件传到子组件</h2>
+<div>
+  <!--childData是子组件的接收参数，appData是父组件传递的数据，整个数据传递过程的重点，桥梁-->
+  <app-one [childData]="appData"></app-one>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<hr>
+<h2>第2种方:通过setter截听输入属性值的变化</h2>
+<h4>这种交互方式的书写格式有些不太符合我们平时的书写规范( 抓住老鼠的都是好猫！)</h4>
+<div>
+  <app-two *ngFor="let app of appData" [child]="app"></app-two>
+</div>
+<hr>
+<h2>第3种方</h2>
+<h4>OnChanges是一个生命周期钩子，一旦检测到该组件(或指令)的输入属性发生了变化，Angular就会调用它的ngOnChanges()方法。</h4>
+<div>
+  <table>
+    <tr>
+      <td>ID</td>
+      <td><input type="text" [(ngModel)]="id"/></td>
+    </tr>
+    <tr>
+      <td>PassWord</td>
+      <td><input type="text" [(ngModel)]="password"/></td> <!--使用ngModel要记住在app.module.ts里面添加FormsModule-->
+    </tr>
+    <tr colspan="2">
+      <td><button (click)="reset()">Reset Log</button></td>
+    </tr>
+  </table>
+  <div>
+    <app-three [id]="id" [password]="password"></app-three>
+  </div>
+</div>
+<hr>
+<h2>第4种方</h2>
+<div>
 
+  <p>{{title}}</p>
+  <app-four (hahaha)="zidingyishijian($event)"></app-four> <!--hahaha是子组件自定义的事件，触发hahaha事件，执行父组件的zidingyishijian()方法
+  参数必须是$event！所以子组件只能传递一个值 如果是多个那就传递成一个数组或者一个对象-->
+
+</div>
+<hr>
+<h2>第5种方</h2>
+<h4>在父组件模板里，新建一个本地变量来代表子组件，然后利用这个变量来读取子组件的属性和调用子组件的方法</h4>
+<div>
+
+  <p>{{title05}}</p><!--调用父组件自己的变量-->
+  <p>{{data.title05}}</p><!--调用子组件的变量-->
+  <app-five  #data></app-five><!--在父组件模板里，新建一个本地变量来代表子组件，然后利用这个变量来读取子组件的属性和调用子组件的方法-->
+  <button (click)="data.changeTitle()">我是父组件中按钮-点击我可以调用子组件的方法</button><!--调用子组件的方法 (changeTitle是子组件定义的方法)-->
+</div>
+<hr>
+<h2>第6种方</h2>
+<div>
+
+  <p>{{title06}}</p>
+  <p>{{data06.title06}}</p>
+  <app-six  #data06></app-six>
+  <button (click)="btnClick()">我是父组件的按钮</button><!--注意这里，跟第五个方法有些区别 onclick是父组件的方法-->
+</div>
+<hr>
+<h2>第7种方</h2>
+<h4>跟angularjs中 anData的用法一模一样 用service定义一个公共对象 用来组件中间使用</h4>
+<div>
+  <p>{{title07}}</p>
+  <button (click)="btnClick07()">我是父组件中的按钮</button>
+  <app-seven></app-seven>
+</div>
+<hr>
