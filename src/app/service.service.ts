@@ -7,5 +7,4 @@ export class Service {
   someFunction() {//公共方法
     alert(1);
   }
-
 }
