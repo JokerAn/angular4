@@ -23,6 +23,7 @@ export class ProductComponent{
   }
   aaa(){
     this.router.navigate(["/customer"]);
+
   }
 
 }
