@@ -31,7 +31,7 @@
   </div>
 </div>
 <hr>
-<h2>第4种方</h2>
+<h2>第4种方-比较好</h2>
 <div>
 
   <p>{{title}}</p>
@@ -67,3 +67,16 @@
   <app-seven></app-seven>
 </div>
 <hr>
+<style>
+  .routes>a{display: inline-block;padding:5px 10px;margin-right: 10px;background: darkcyan;border-right: 3px;cursor: pointer}
+</style>
+<div class="routes">
+  <a [routerLink]="['/']">主页</a>
+  <a [routerLink]="['/product']">商品页</a>
+  <a [routerLink]="['/customer']" [queryParams]="{id:'我在html中定义了所以，相当于在路由的path定义了，所以刷新页面也不会丢失'}">客户页面</a>
+</div>
+
+<router-outlet></router-outlet>
+<div style="height: 100px;border:1px solid #999;padding:20px;margin-top:50px;">
+  我是footer
+</div>

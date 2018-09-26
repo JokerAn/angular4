@@ -2,7 +2,6 @@ import { Component,ViewChild  } from '@angular/core';
 import { ThreeComponent } from './three/three.component';
 import {SixComponent} from './six/six.component';
 import { Service } from './service.service';//导入服务 第七个方法需要
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,7 +13,7 @@ export class AppComponent {
 
   //这是三个用到的数据
   id;password;
-  @ViewChild(ThreeComponent) childView: ThreeComponent;//此处先忽略不看
+  @ViewChild(ThreeComponent) childView: ThreeComponent;//相当于将<app-one [childData]="appData"></app-one>中的childData
   constructor() {
     this.reset();//构造函数，有初始化id和password的功能
   }
@@ -22,7 +21,11 @@ export class AppComponent {
   reset() {
     this.id = 100001;
     this.password = 123456;
+
     if (this.childView) {
+      let linshi=this.pService.copy(this.childView.changeLog);
+      console.log(linshi);//
+      console.log(this.childView.changeLog);//这个数据很是特别啊 直接打印只能显示一条 因为下一行代码将组件内的这个数据给清空了就剩一条了
       this.childView.reset();
     }
   }
