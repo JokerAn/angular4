@@ -76,7 +76,25 @@
   <a [routerLink]="['/customer']" [queryParams]="{id:'我在html中定义了所以，相当于在路由的path定义了，所以刷新页面也不会丢失'}">客户页面</a>
 </div>
 
-<router-outlet></router-outlet>
+<!--<router-outlet></router-outlet>-->
+
+
+<style>
+  #router02 li{cursor: pointer}
+</style>
+
+
+<div id="router02" style="border:1px solid;padding:50px;">
+  <ul>
+    <li [routerLink]="['/page01','我是参数']">page01</li>
+    <li [routerLink]="['/page02']" [queryParams]="{id:1}">page02</li>
+    <li [routerLink]="['/page03','我是参数']">page03</li>
+    <li (click)="gotopage03()">page03</li>
+  </ul>
+  <div style="padding:50px">
+    <router-outlet></router-outlet>
+  </div>
+</div>
 <div style="height: 100px;border:1px solid #999;padding:20px;margin-top:50px;">
   我是footer
 </div>

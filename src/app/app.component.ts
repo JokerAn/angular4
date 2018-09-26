@@ -2,6 +2,8 @@ import { Component,ViewChild  } from '@angular/core';
 import { ThreeComponent } from './three/three.component';
 import {SixComponent} from './six/six.component';
 import { Service } from './service.service';//导入服务 第七个方法需要
+import {ActivatedRoute, Router} from '@angular/router';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,7 +16,7 @@ export class AppComponent {
   //这是三个用到的数据
   id;password;
   @ViewChild(ThreeComponent) childView: ThreeComponent;//相当于将<app-one [childData]="appData"></app-one>中的childData
-  constructor() {
+  constructor(private router:Router) {
     this.reset();//构造函数，有初始化id和password的功能
   }
 
@@ -65,8 +67,10 @@ export class AppComponent {
     console.log(this.title07);
   }
 
-
-
+  //page03
+  gotopage03(){
+    this.router.navigate(['/page03',2])//要想在这传递参数 路由定义的时候必须定义好那个字段接收参数！否则不能这样写
+  }
 
 
 

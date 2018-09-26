@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -8,18 +8,14 @@ import { Router } from '@angular/router';
 })
 export class ProductComponent{
   private  canshubylastPage;
-  constructor(public router:Router) {
+  constructor(public router:Router,routerInfo:ActivatedRoute) {
 
 
 
   }
 
   ngOnInit() {
-    console.log(this.router.data);
-    this.router.data
-      .subscribe((data: { crisis: Crisis }) => {
-       console.log(crisis)
-      });
+    console.log(this.router);
   }
   aaa(){
     this.router.navigate(["/customer"]);

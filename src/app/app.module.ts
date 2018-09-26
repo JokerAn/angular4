@@ -13,9 +13,13 @@ import { SixComponent } from './six/six.component';
 import { SevenComponent } from './seven/seven.component';
 import { Service } from './service.service';
 import {RouterModule} from '@angular/router';
-import {appRoutes} from './app.router';
+import {appRoutes} from './app.router';//引入router
 import { ProductComponent } from './product/product.component';
 import { CustomerComponent } from './customer/customer.component';
+import { Page01Component } from './page01/page01.component';
+import { Page02Component } from './page02/page02.component';
+import { Page404Component } from './page404/page404.component';
+import { Page03Component } from './page03/page03.component';
 
 //导入服务 第七个方法需要
 
@@ -30,11 +34,15 @@ import { CustomerComponent } from './customer/customer.component';
     SixComponent,
     ProductComponent,
     CustomerComponent,
+    Page01Component,
+    Page02Component,
+    Page404Component,
+    Page03Component,
     SevenComponent
   ],
   imports: [
     BrowserModule,FormsModule,RouterModule.forRoot(appRoutes)
-  ],
+  ],//设置那个文件是router RouterModule.forRoot(appRoutes)
   providers: [Service],//注册服务 第七个方法需要
   bootstrap: [AppComponent]
 })
