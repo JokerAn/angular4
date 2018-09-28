@@ -72,6 +72,12 @@ export class AppComponent {
     this.router.navigate(['/page03',2])//要想在这传递参数 路由定义的时候必须定义好那个字段接收参数！否则不能这样写
   }
 
+  //page05
+  gotopage05(){
+    this.router.navigate(['/page05','我是page5的参数'])//要想在这传递参数 路由定义的时候必须定义好那个字段接收参数！否则不能这样写
+  }
+
+
 
 
 }

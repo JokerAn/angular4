@@ -70,11 +70,7 @@
 <style>
   .routes>a{display: inline-block;padding:5px 10px;margin-right: 10px;background: darkcyan;border-right: 3px;cursor: pointer}
 </style>
-<div class="routes">
-  <a [routerLink]="['/']">主页</a>
-  <a [routerLink]="['/product']">商品页</a>
-  <a [routerLink]="['/customer']" [queryParams]="{id:'我在html中定义了所以，相当于在路由的path定义了，所以刷新页面也不会丢失'}">客户页面</a>
-</div>
+
 
 <!--<router-outlet></router-outlet>-->
 
@@ -85,11 +81,17 @@
 
 
 <div id="router02" style="border:1px solid;padding:50px;">
+  <div class="routes">
+    <a [routerLink]="['/index']">主页</a>
+    <a [routerLink]="['/product']">商品页</a>
+    <a [routerLink]="['/customer']" [queryParams]="{id:'我在html中定义了所以，相当于在路由的path定义了，所以刷新页面也不会丢失'}">客户页面</a>
+  </div>
   <ul>
     <li [routerLink]="['/page01','我是参数']">page01</li>
     <li [routerLink]="['/page02']" [queryParams]="{id:1}">page02</li>
     <li [routerLink]="['/page03','我是参数']">page03</li>
     <li (click)="gotopage03()">page03</li>
+    <li (click)="gotopage05()">page05</li>
   </ul>
   <div style="padding:50px">
     <router-outlet></router-outlet>

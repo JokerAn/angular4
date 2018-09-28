@@ -20,6 +20,10 @@ import { Page01Component } from './page01/page01.component';
 import { Page02Component } from './page02/page02.component';
 import { Page404Component } from './page404/page404.component';
 import { Page03Component } from './page03/page03.component';
+import { Page05Component } from './page05/page05.component';
+import { Page051Component } from './page051/page051.component';
+import { Page052Component } from './page052/page052.component';
+import { IndexpageComponent } from './indexpage/indexpage.component';
 
 //导入服务 第七个方法需要
 
@@ -38,6 +42,10 @@ import { Page03Component } from './page03/page03.component';
     Page02Component,
     Page404Component,
     Page03Component,
+    Page05Component,
+    Page051Component,
+    Page052Component,
+    IndexpageComponent,
     SevenComponent
   ],
   imports: [
