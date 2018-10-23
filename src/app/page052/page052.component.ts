@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
 export class Page052Component implements OnInit {
 
   constructor(private routerInfo:ActivatedRoute) { }
-
+  private canshu:any;
   ngOnInit() {
     // this.routerInfo.params.subscribe(res=>{//因为这个是queryParams传过来的所以要用queryParams来接收
     this.routerInfo.queryParams.subscribe(res=>{

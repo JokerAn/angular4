@@ -7,13 +7,14 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./page01.component.css']
 })
 export class Page01Component implements OnInit {
-
+  public canshu:string
+  private canshu2:string
   constructor( private routeInfo:ActivatedRoute) {
-    let canshu;
+
   }
 
   ngOnInit() {
-    this.canshu=this.routeInfo.snapshot.params.name
+    this.canshu=this.routeInfo.snapshot.params.name;
   }
 
 }

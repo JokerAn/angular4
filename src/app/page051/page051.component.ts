@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {a} from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-page051',
@@ -10,9 +11,11 @@ export class Page051Component implements OnInit {
 
   constructor(private routerInfo:ActivatedRoute) { }
 
+  private canshu:any;
   ngOnInit() {
-    this.routerInfo.params.subscribe(res=>{
-      this.canshu=res.id
+
+    this.routerInfo.params.subscribe(res => {
+      this.canshu = res.id;
     })
   }
 
