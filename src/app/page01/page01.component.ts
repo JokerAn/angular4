@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
 export class Page01Component implements OnInit {
 
   constructor( private routeInfo:ActivatedRoute) {
-    // let canshu;
+    let canshu;
   }
 
   ngOnInit() {
