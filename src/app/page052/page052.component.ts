@@ -15,6 +15,7 @@ export class Page052Component implements OnInit {
     this.routerInfo.queryParams.subscribe(res=>{
       console.log(res);
       this.canshu=res.name
+
     })
   }
 
