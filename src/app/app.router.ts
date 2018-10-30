@@ -9,6 +9,7 @@ import {Page05Component} from './page05/page05.component';
 import {Page052Component} from './page052/page052.component';
 import {Page051Component} from './page051/page051.component';
 import {IndexpageComponent} from './indexpage/indexpage.component';
+import {Http02Component} from './http02/http02.component';
 
 export const appRoutes=[
 
@@ -23,5 +24,6 @@ export const appRoutes=[
       {path:'page051/:id',component:Page051Component},
       {path:'page052',component:Page052Component},
     ]},
+  {path:'page03/:id',component:Http02Component},
   {path:'**',component:Page404Component},
 ]

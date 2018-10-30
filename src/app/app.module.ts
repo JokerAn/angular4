@@ -24,6 +24,7 @@ import { Page05Component } from './page05/page05.component';
 import { Page051Component } from './page051/page051.component';
 import { Page052Component } from './page052/page052.component';
 import { IndexpageComponent } from './indexpage/indexpage.component';
+import { Http02Component } from './http02/http02.component';
 
 //导入服务 第七个方法需要
 
@@ -46,6 +47,7 @@ import { IndexpageComponent } from './indexpage/indexpage.component';
     Page051Component,
     Page052Component,
     IndexpageComponent,
+    Http02Component,
     SevenComponent
   ],
   imports: [
