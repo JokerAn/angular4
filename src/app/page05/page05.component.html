@@ -1,0 +1,12 @@
+<div style="padding:30px;border:1px solid #ddd">
+  <p>
+    page05 works!得到的参数是： {{canshu}}
+  </p>
+  <ul>
+    <li><a [routerLink]="['./page051',88]">page51</a></li>
+    <li><a (click)="gotopage052()">page52</a></li>
+  </ul>
+  <div style="padding:10px">
+    <router-outlet></router-outlet>
+  </div>
+</div>

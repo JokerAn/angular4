@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild  } from '@angular/core';
+import { ThreeComponent } from './three/three.component';
+import {SixComponent} from './six/six.component';
+import { Service } from './service.service';//导入服务 第七个方法需要
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,85 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular4NoTsLint';
+  //这是第一个跟第二个用到的数据
+  appData = ['我是appComponent中的第一个数据','Apple','Banana','watermelon','pear',{name:'tom',age:646}];
+
+  //这是三个用到的数据
+  public id;public password;
+  @ViewChild(ThreeComponent) childView: ThreeComponent;//相当于将<app-one [childData]="appData"></app-one>中的childData
+  constructor(private router:Router) {
+    this.reset();//构造函数，有初始化id和password的功能
+    // localStorage.user_token = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YjVhYjE3MTJiNTdiMGU0ODg2ZTM0MDIiLCJhdWQiOiJwZW5namllcmFuQGdtYWlsLmNvbSJ9.XQ0MoqK4N7tm9bjt2JsN_aS2ql9wHmnUuH4jWy6-Pc8';
+    localStorage.user_token = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyMTExIiwiYXVkIjoiY2VzaGkub25lQGFtYm93LmNvbSJ9.5FeQRcmdQ91NEfhiOcfCuX-k1mT7Ky63ZuCW28qdUXU';
+    // localStorage.customerId = '5b5ab1725094b0e4c397b696';
+    localStorage.customerId = "EDURP_2018";
+    // localStorage.orgId = '5b5ab5cf0e82792f02eb5808';
+    localStorage.orgId = "111111111111111111";
+    // localStorage.orgName = 'ceshi';
+    localStorage.orgName = "测试6";
+    // localStorage.user_id = "5b8120873086b0e45d332025";
+    localStorage.user_id = "user111";
+    // localStorage.person_id = "5b8120876ed9b0e45278aead";
+  }
+
+  reset() {
+    this.id = 100001;
+    this.password = 123456;
+
+    if (this.childView) {
+      let linshi=this.pService.copy(this.childView.changeLog);
+      console.log(linshi);//
+      console.log(this.childView.changeLog);//这个数据很是特别啊 直接打印只能显示一条 因为下一行代码将组件内的这个数据给清空了就剩一条了
+      this.childView.reset();
+    }
+  }
+
+//第四个用到的东西
+  title="你还没点击按钮";
+  zidingyishijian(res:any) { //父组件的方法，更换title的值
+    console.log({'我是父组件我接受到了子组件的数据':res})
+    if(res[0]){ //如果子组件弹射出来的变量为true
+      this.title="你点击了按钮"; //那么就更改title
+    }
+  }
+
+  //第五个组件用到的数据
+  title05='我是第五个组件用到的数据（父组件中定义的）'
+
+ //第六个组件用到的数据
+  title06='我是第六个组件用到的数据（父组件中定义的）';
+  @ViewChild(SixComponent)//通过@ViewChild属性装饰器，将子组件CountdownTimerComponent注入到私有属性timerComponent里面，此处不能加分号。
+  //相当于 方法五中 用一个本地变量#data来代替子组件（写在html中） 这个是用变量res_six=子组件 （写在js）中 其实是一样的
+  // private child: SixComponent;
+  res_six: SixComponent;
+  btnClick(){
+    this.res_six.changeTitle06();//调用子组件的方法
+  }
+
+
+
+//第七个组件用到的数据
+  title07='app';
+  // constructor(public pService: Service) { //原来的写法是这样的pService = new Service();
+  // }
+  pService = new Service()
+  btnClick07(){
+    this.title07 = this.pService.anyData;
+    this.pService.someFunction();//调用某些公共方法
+    console.log(this.title07);
+  }
+
+  //page03
+  gotopage03(){
+    this.router.navigate(['/page03',2])//要想在这传递参数 路由定义的时候必须定义好那个字段接收参数！否则不能这样写
+  }
+
+  //page05
+  gotopage05(){
+    this.router.navigate(['/page05','我是page5的参数'])//要想在这传递参数 路由定义的时候必须定义好那个字段接收参数！否则不能这样写
+  }
+
+
+
+
 }

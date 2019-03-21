@@ -1,0 +1,6 @@
+<ul>
+  <li *ngFor="let children of childData; let a1 = index">{{a1}}--{{children}}</li>
+</ul>
+<ul>
+  <li *ngFor="let children of childData; index as a2">{{a2}}--{{children}}</li><!--index的第二种写法-->
+</ul>
